@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚽ Friendship Day for Sablito ⚽</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #FF6B6B;
+            --secondary: #4ECDC4;
+            --accent: #FFE66D;
+            --dark: #292F36;
+            --light: #F7FFF7;
+            --pink: #ff7eb9;
+            --blue: #2ec4b6;
+            --yellow: #ffd166;
+            --purple: #a09be7;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #fff5f5, #e2f3f8);
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: #333;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px 0;
+            position: relative;
+        }
+        
+        .header-content {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-content::before {
+            content: "";
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: var(--yellow);
+            border-radius: 50%;
+            opacity: 0.2;
+            z-index: -1;
+        }
+        
+        .header-content::after {
+            content: "";
+            position: absolute;
+            bottom: -80px;
+            left: -40px;
+            width: 250px;
+            height: 250px;
+            background: var(--blue);
+            border-radius: 50%;
+            opacity: 0.2;
+            z-index: -1;
+        }
+        
+        h1 {
+            font-family: 'Bangers', cursive;
+            font-size: 4.5rem;
+            color: var(--dark);
+            text-shadow: 4px 4px 0 var(--pink);
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite alternate;
+        }
+        
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-15px); }
+        }
+        
+        .date-badge {
+            background: linear-gradient(90deg, var(--pink), var(--purple));
+            color: white;
+            display: inline-block;
+            padding: 8px 25px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .message-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .message-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+        }
+        
+        h2 {
+            font-family: 'Pacifico', cursive;
+            color: var(--pink);
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        .message {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .highlight {
+            background: var(--accent);
+            padding: 0 5px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        
+        .football-field {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 40px 0;
+            position: relative;
+            height: 200px;
+            background: #2a8c5f;
+            border-radius: 100px;
+            border: 4px solid #fff;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        
+        .field-lines {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 2px solid rgba(255,255,255,0.5);
+            border-radius: 100px;
+        }
+        
+        .center-circle {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border: 2px solid rgba(255,255,255,0.5);
+            border-radius: 50%;
+        }
+        
+        .player {
+            width: 90px;
+            height: 90px;
+            background: var(--secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .player:hover {
+            transform: translateY(-10px) scale(1.1);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+        
+        .player.you {
+            background: var(--primary);
+        }
+        
+        .player.sablito {
+            background: var(--dark);
+        }
+        
+        .ball {
+            position: absolute;
+            font-size: 2.5rem;
+            animation: spin 3s linear infinite;
+            z-index: 5;
+        }
+        
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .memories {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        .memory {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-left: 5px solid var(--pink);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .memory:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+        }
+        
+        .memory h3 {
+            color: var(--blue);
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+        }
+        
+        .memory i {
+            font-size: 2rem;
+            color: var(--pink);
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .signature {
+            text-align: center;
+            font-family: 'Pacifico', cursive;
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin: 40px 0 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+        }
+        
+        .confetti {
+            position: fixed;
+            width: 12px;
+            height: 12px;
+            background-color: var(--primary);
+            opacity: 0;
+            animation: confetti 5s ease-in-out infinite;
+            z-index: 1;
+        }
+        
+        @keyframes confetti {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            color: var(--dark);
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+        }
+        
+        .heart {
+            color: var(--primary);
+            animation: pulse 1.5s infinite;
+            display: inline-block;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+            100% { transform: scale(1); }
+        }
+        
+        .photo-frame {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            height: 350px;
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: white;
+        }
+        
+        .friendship-score {
+            text-align: center;
+            font-size: 1.5rem;
+            margin: 30px 0;
+        }
+        
+        .score-bar {
+            width: 100%;
+            height: 30px;
+            background: #eee;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-top: 10px;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+        }
+        
+        .score-fill {
+            height: 100%;
+            width: 100%;
+            background: linear-gradient(90deg, var(--pink), var(--purple));
+            border-radius: 15px;
+            animation: fillAnimation 2s forwards;
+        }
+        
+        @keyframes fillAnimation {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--yellow);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="confetti-container"></div>
+    
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <h1>HAPPY FRIENDSHIP DAY SABLITO!</h1>
+                <div class="date-badge">
+                    <i class="fas fa-calendar-alt"></i> August 3, 2025
+                </div>
+                <p class="friendship-score">Our Friendship Score: 
+                    <span class="highlight">Infinite/10</span>
+                </p>
+                <div class="score-bar">
+                    <div class="score-fill"></div>
+                </div>
+            </div>
+        </header>
+        
+        <div class="main-content">
+            <div>
+                <div class="message-card">
+                    <h2>⚽ To My Football-Loving Bestie ⚽</h2>
+                    
+                    <div class="message">
+                        <p>Dear <span class="highlight">Sablito</span>,</p>
+                        
+                        <p>On this special <span class="highlight">Friendship Day 2025</span>, I wanted to celebrate our amazing friendship with something as awesome as you are! Since you're the biggest football fan I know, I thought I'd make this celebration a <span class="highlight">championship-worthy event</span>!</p>
+                        
+                        <p>You're not just my friend - you're my <span class="highlight">teammate</span>, my <span class="highlight">MVP</span>, and my <span class="highlight">go-to person</span> for everything from football talk to life advice. Our friendship is like the perfect match - full of excitement, passion, and unforgettable moments!</p>
+                        
+                        <p>Here's to more <span class="highlight">goals</span> together, more <span class="highlight">victories</span> to celebrate, and more <span class="highlight">memories</span> to create! May our friendship always be like the World Cup finals - absolutely legendary!</p>
+                    </div>
+                    
+                    <div class="football-field">
+                        <div class="field-lines"></div>
+                        <div class="center-circle"></div>
+                        <div class="player you">YOU</div>
+                        <div class="ball">⚽</div>
+                        <div class="player sablito">SAB</div>
+                    </div>
+                </div>
+                
+                <div class="friendship-score">
+                    <p>Sablito's Football Skills: 
+                        <span class="highlight">Legend</span>
+                    </p>
+                    <div class="score-bar">
+                        <div class="score-fill"></div>
+                    </div>
+                </div>
+            </div>
+                
+                <div class="message-card" style="margin-top: 30px;">
+                    <h2>🏆 Friendship Trophy Cabinet 🏆</h2>
+                    
+                    <div class="memories">
+                        <div class="memory">
+                            <i class="fas fa-trophy"></i>
+                            <h3>Best Teammate</h3>
+                            <p>Always there when I need support on and off the field!</p>
+                        </div>
+                        
+                        <div class="memory">
+                            <i class="fas fa-star"></i>
+                            <h3>MVP Friendship</h3>
+                            <p>Barcelona vs Benfica 5/4, incredible!</p>
+                        </div>
+
+                         <div class="memory">
+                            <i class="fas fa-glass-cheers"></i>
+                            <h3>Victory Celebration</h3>
+                            <p>I remember the Champions League nights and how we used to watch Barça matches and tell each other who would score</p>
+                        </div>
+
+                        <div class="memory">
+                            <i class="fas fa-laugh-beam"></i>
+                            <h3>Funniest Moments</h3>
+                            <p>It's funny when we send each other reels and we watch them and comment on them!</p>
+                        </div>
+                        
+                        <div class="memory">
+                            <i class="fas fa-user-friends"></i>
+                            <h3>MVP Friendship</h3>
+                            <p>You're the Most Valuable Player in my life!</p>
+                        </div>
+                        
+                        <div class="memory">
+                            <i class="fas fa-heart"></i>
+                            <h3>Unbreakable Bond</h3>
+                            <p>Through wins and losses, our friendship stays strong!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+       
+        <div class="signature">
+            Forever your friend and biggest fan,<br>
+            Ibolito
+        <i class="fas fa-hand-back-fist" style="transform: scaleX(-1);"></i> <!-- Right fist (🤜🏻) -->
+        <i class="fas fa-hand-back-fist"></i> <!-- Left fist (🤛🏻) -->
+        </>
+        
+        <div class="footer">
+            Made with <span class="heart">❤️</span> for Sablito on Friendship Day 2025 
+            <div style="margin-top: 15px;">
+                <span class="badge">Best Friends Forever</span>
+                <span class="badge">Football Sisters</span>
+                <span class="badge">Unstoppable Duo</span>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Create confetti
+        function createConfetti() {
+            const colors = ['#FF6B6B', '#4ECDC4', '#FFE66D', '#ff7eb9', '#a09be7'];
+            const container = document.getElementById('confetti-container');
+            
+            for (let i = 0; i < 150; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.width = Math.random() * 12 + 8 + 'px';
+                confetti.style.height = Math.random() * 12 + 8 + 'px';
+                confetti.style.animationDuration = Math.random() * 3 + 2 + 's';
+                confetti.style.animationDelay = Math.random() * 5 + 's';
+                container.appendChild(confetti);
+            }
+        }
+        
+        // Animate football players passing the ball
+        function animatePlayers() {
+            const players = document.querySelectorAll('.player');
+            const ball = document.querySelector('.ball');
+            
+            setInterval(() => {
+                players.forEach(player => {
+                    player.style.transform = player.style.transform.includes('translateY(-10px)') ? 
+                        '' : 'translateY(-10px)';
+                });
+            }, 2000);
+        }
+        
+        // Initialize animations
+        window.onload = function() {
+            createConfetti();
+            animatePlayers();
+            
+            // Add click effect to memories
+            document.querySelectorAll('.memory').forEach(memory => {
+                memory.addEventListener('click', function() {
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 200);
+                });
+            });
+        };
+    </script>
+</body>
+</html>
